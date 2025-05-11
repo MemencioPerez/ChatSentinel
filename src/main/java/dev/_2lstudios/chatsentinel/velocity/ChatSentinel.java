@@ -193,6 +193,10 @@ public class ChatSentinel {
 				// Send admin notification
 				dispatchNotification(moderationModule, placeholders);
 
+				// Send discord webhook notification
+				DiscordWebhookModule discordWebhookModule = moduleManager.getDiscordWebhookModule();
+				server.getScheduler().buildTask(this, () -> discordWebhookModule.dispatchWebhookNotification(moderationModule, placeholders)).schedule();
+
 				// Update message
 				finalResult.setMessage(result.getMessage());
 

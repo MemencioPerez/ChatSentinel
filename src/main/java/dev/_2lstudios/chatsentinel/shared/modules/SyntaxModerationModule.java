@@ -7,10 +7,11 @@ public class SyntaxModerationModule extends ModerationModule {
 	private String[] whitelist;
 
 	public void loadData(boolean enabled, String customName, int maxWarns, String warnNotification,
-			String[] whitelist, String[] commands) {
+			boolean webhookEnabled, String[] whitelist, String[] commands) {
 		setEnabled(enabled);
 		setMaxWarns(maxWarns);
 		setWarnNotification(warnNotification);
+		setWebhookEnabled(webhookEnabled);
 		setCommands(commands);
 		setCustomName(customName);
 		this.whitelist = whitelist;
