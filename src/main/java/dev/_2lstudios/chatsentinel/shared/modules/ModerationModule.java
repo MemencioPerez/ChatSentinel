@@ -9,6 +9,7 @@ public abstract class ModerationModule {
     private int maxWarns = 0;
     private String warnNotification = null;
 	private String[] commands = new String[0];
+    private String customName;
 
     public boolean isEnabled() {
         return enabled;
@@ -43,6 +44,14 @@ public abstract class ModerationModule {
     }
 
     public abstract String getName();
+
+    public String getCustomName() {
+        return customName;
+    }
+
+    public void setCustomName(String customName) {
+        this.customName = customName;
+    }
 
     public abstract ChatEventResult processEvent(ChatPlayer chatPlayer, MessagesModule messagesModule, String playerName, String originalMessage, String lang);
 

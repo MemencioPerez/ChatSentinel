@@ -116,6 +116,7 @@ public class ChatSentinel {
 
 	public String[][] getPlaceholders(Player player, ChatPlayer chatPlayer, ModerationModule moderationModule, String message) {
 		String playerName = player.getUsername();
+		String customModuleName = moderationModule.getCustomName();
 		int warns = chatPlayer.getWarns(moderationModule);
 		int maxWarns = moderationModule.getMaxWarns();
 		float remainingTime = moduleManager.getCooldownModule().getRemainingTime(chatPlayer, message);
@@ -123,8 +124,8 @@ public class ChatSentinel {
 		String serverName = serverConnection.isPresent() ? serverConnection.get().getServerInfo().getName() : "";
 
 		return new String[][] {
-				{ "%player%", "%message%", "%warns%", "%maxwarns%", "%cooldown%", "%server_name%" },
-				{ playerName, message, String.valueOf(warns), String.valueOf(maxWarns), String.valueOf(remainingTime), serverName }
+				{ "%player%", "%module%", "%message%", "%warns%", "%maxwarns%", "%cooldown%", "%server_name%" },
+				{ playerName, customModuleName, message, String.valueOf(warns), String.valueOf(maxWarns), String.valueOf(remainingTime), serverName }
 		};
 	}
 

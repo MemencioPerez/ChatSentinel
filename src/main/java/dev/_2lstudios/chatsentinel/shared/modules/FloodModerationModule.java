@@ -9,12 +9,13 @@ public class FloodModerationModule extends ModerationModule {
 	private boolean replace;
 	private Pattern pattern;
 
-	public void loadData(boolean enabled, boolean replace, int maxWarns, String pattern,
+	public void loadData(boolean enabled, String customName, boolean replace, int maxWarns, String pattern,
 			String warnNotification, String[] commands) {
 		setEnabled(enabled);
 		setMaxWarns(maxWarns);
 		setWarnNotification(warnNotification);
 		setCommands(commands);
+		setCustomName(customName);
 		this.replace = replace;
 		this.pattern = Pattern.compile(pattern);
 	}
